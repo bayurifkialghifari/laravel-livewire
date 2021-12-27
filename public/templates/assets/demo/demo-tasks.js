@@ -1,10 +1,10 @@
 
 $('.checklist-toggler').click(function () {
-	if (($(this).parents('.card-checklist').children('.checklist-container').css('display'))=="none") {
-		$(this).parents('.card-checklist').children('.checklist-container').slideDown({duration:200});
+	if (($(this).parents('.card-checklist').children('.checklist-container').css('display')) == "none") {
+		$(this).parents('.card-checklist').children('.checklist-container').slideDown({ duration: 200 });
 		$(this).children('.fa').toggleClass('fa-angle-down fa-angle-left');
 	} else {
-		$(this).parents('.card-checklist').children('.checklist-container').slideUp({duration:200});
+		$(this).parents('.card-checklist').children('.checklist-container').slideUp({ duration: 200 });
 		$(this).children('.fa').toggleClass('fa-angle-down fa-angle-left');
 	}
 });
@@ -12,7 +12,7 @@ $('.checklist-toggler').click(function () {
 
 //ID of list
 //Give ID to each nestable list and allow dragging between them
-$('#nestable-list-1, #nestable-list-2, #nestable-list-3, #nestable-list-4, #nestable-list-5, #nestable-list-6, #nestable-list-7, #nestable-list-8, #nestable-list-9').nestable({group: 1});
+$('#nestable-list-1, #nestable-list-2, #nestable-list-3, #nestable-list-4, #nestable-list-5, #nestable-list-6, #nestable-list-7, #nestable-list-8, #nestable-list-9').nestable({ group: 1 });
 // $('#nestable-list-1').nestable({group: 1});
 // $('#nestable-list-2').nestable({group: 2});
 // $('#nestable-list-3').nestable({group: 3});
@@ -35,23 +35,23 @@ $('#sortable-tasks-1, #sortable-tasks-2, #sortable-tasks-3, #sortable-tasks-4, #
 	}
 });
 
-$( function () {
+$(function () {
 
-	$('.card-task .checkbox-inline .iCheck-helper').click( function () {
+	$('.card-task .checkbox-inline .iCheck-helper').click(function () {
 		var total = $(this).closest('.card-task').find('.checkbox-inline input').length;
 		var checked = $(this).closest('.card-task').find('.checkbox-inline input:checked').length;
-		$(this).closest('.card-task').find('.card-done').html(checked+'/'+total);
-		$(this).closest('.card-task').find('.progress-bar').css("width", (checked/total)*100+'%');
+		$(this).closest('.card-task').find('.card-done').html(checked + '/' + total);
+		$(this).closest('.card-task').find('.progress-bar').css("width", (checked / total) * 100 + '%');
 	});
 
-	$('.card-task').each( function () {
+	$('.card-task').each(function () {
 		var total = $(this).find('.checkbox-inline input').length;
 		var checked = $(this).find('.checkbox-inline input:checked').length;
-		$(this).find('.card-done').html(checked+'/'+total);
-		$(this).find('.progress-bar').css("width", (checked/total)*100+'%');
+		$(this).find('.card-done').html(checked + '/' + total);
+		$(this).find('.progress-bar').css("width", (checked / total) * 100 + '%');
 	});
 
-	$('.card-task .card-options .toggle-check').click( function () {
+	$('.card-task .card-options .toggle-check').click(function () {
 		if ($(this).find('i').hasClass('fa-check')) {
 			$(this).closest('.card-task').find('div.icheckbox_minimal-blue:not(.checked) .iCheck-helper').click();
 			$(this).find('i').removeClass('fa-check').addClass('fa-undo');
@@ -61,5 +61,5 @@ $( function () {
 			$(this).find('i').removeClass('fa-undo').addClass('fa-check');
 		}
 	});
-	
+
 });
