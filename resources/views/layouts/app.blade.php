@@ -12,15 +12,15 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     {{-- CSS --}}
     <link type='text/css' href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600' rel='stylesheet'>
-    <link type="text/css" href="{{ asset('templates/assets/fonts/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">    
-    <link type="text/css" href="{{ asset('templates/assets/fonts/themify-icons/themify-icons.css') }}" rel="stylesheet">              
-    <link type="text/css" href="{{ asset('templates/assets/css/styles.css') }}" rel="stylesheet">                                     
-    <link type="text/css" href="{{ asset('templates/assets/plugins/iCheck/skins/minimal/blue.css') }}" rel="stylesheet">              
+    <link type="text/css" href="{{ asset('templates/assets/fonts/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('templates/assets/fonts/themify-icons/themify-icons.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('templates/assets/css/styles.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('templates/assets/plugins/iCheck/skins/minimal/blue.css') }}" rel="stylesheet">
 	<link type="text/css" href="{{ asset('templates/assets/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet">
 	<link type="text/css" href="{{ asset('templates/assets/plugins/datatables/dataTables.themify.css') }}" rel="stylesheet">
     {{-- JAVASCRIPT --}}
-    <script type="text/javascript" src="{{ asset('templates/assets/js/jquery-1.10.2.min.js') }}"></script> 							    
-    <script type="text/javascript" src="{{ asset('templates/assets/js/jqueryui-1.10.3.min.js') }}"></script> 							
+    <script type="text/javascript" src="{{ asset('templates/assets/js/jquery-1.10.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('templates/assets/js/jqueryui-1.10.3.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/js/enquire.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/velocityjs/velocity.min.js') }}"></script>
@@ -28,19 +28,19 @@
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/wijets/wijets.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/codeprettifier/prettify.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/bootstrap-switch/bootstrap-switch.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('templates/assets/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js') }}"></script>  
-    <script type="text/javascript" src="{{ asset('templates/assets/plugins/iCheck/icheck.min.js') }}"></script>     					
+    <script type="text/javascript" src="{{ asset('templates/assets/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('templates/assets/plugins/iCheck/icheck.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/nanoScroller/js/jquery.nanoscroller.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/js/application.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/demo/demo.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('templates/assets/demo/demo-switcher.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset('templates/assets/demo/demo-switcher.js') }}"></script> --}}
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/datatables/jquery.dataTables.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.3/rails.min.js"></script> --}}
 </head>
 <body class="animated-content">
     <div id="app">
-        <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
+        <header id="topnav" class="navbar navbar-fixed-top navbar-bluegray" role="banner">
 
             <div class="logo-area">
                 <span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg">
@@ -50,13 +50,13 @@
                         </span>
                     </a>
                 </span>
-                
-                <a class="navbar-brand" href="index.html">Avenxo</a>
-    
+
+                <a class="navbar-brand" href="javascript:void(0)">Avenxo</a>
+
             </div><!-- logo-area -->
-    
+
             <ul class="nav navbar-nav toolbar pull-right">
-    
+
                 <li class="toolbar-icon-bg hidden-xs" id="trigger-fullscreen">
                     <a href="#" class="toggle-fullscreen"><span class="icon-bg"><i class="ti ti-fullscreen"></i></span></i></a>
                 </li>
@@ -93,7 +93,7 @@
                                     <div class="widget-body" style="padding-top: 50px">
                                         <div class="userinfo">
                                             <div class="avatar">
-                                                <img src="http://placehold.it/300&text=Placeholder" class="img-responsive img-circle"> 
+                                                <img src="http://placehold.it/300&text=Placeholder" class="img-responsive img-circle">
                                             </div>
                                             <div class="info">
                                                 <span class="username">Jonathan Smith</span>
@@ -105,20 +105,20 @@
                                 <div class="widget stay-on-collapse" id="widget-sidebar">
                                     @include('layouts.navigation')
                                 </div>
-    
+
                                 {{-- <div class="widget" id="widget-progress">
                                     <div class="widget-heading">
                                         Progress
                                     </div>
                                     <div class="widget-body">
-    
+
                                         <div class="mini-progressbar">
                                             <div class="clearfix mb-sm">
                                                 <div class="pull-left">Bandwidth</div>
                                                 <div class="pull-right">50%</div>
                                             </div>
-                                            
-                                            <div class="progress">    
+
+                                            <div class="progress">
                                                 <div class="progress-bar progress-bar-lime" style="width: 50%"></div>
                                             </div>
                                         </div>
@@ -127,30 +127,21 @@
                                                 <div class="pull-left">Storage</div>
                                                 <div class="pull-right">25%</div>
                                             </div>
-                                            
-                                            <div class="progress">    
+
+                                            <div class="progress">
                                                 <div class="progress-bar progress-bar-info" style="width: 25%"></div>
                                             </div>
                                         </div>
-    
+
                                     </div>
                                 </div> --}}
                             </div>
                         </div>
                     </div>
-                    <div class="static-content-wrapper">
+                    <div class="static-content-wrapper" style="padding-top: 70px">
                         <div class="static-content">
                             <div class="page-content">
-                                <ol class="breadcrumb">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="#">Advanced Tables</a></li>
-                                    <li class="active"><a href="tables-data.html">Data Tables</a></li>
-                                </ol>
-                                @if (session('status'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('status') }}
-                                    </div>
-                                @endif
+                                {{ Breadcrumbs::render(isset($view) ? $view : 'blog') }}
                                 @yield('content')
                             </div> <!-- #page-content -->
                         </div>
@@ -162,11 +153,11 @@
                                 <button class="pull-right btn btn-link btn-xs hidden-print" id="back-to-top"><i class="ti ti-arrow-up"></i></button>
                             </div>
                         </footer>
-                        <!-- Switcher -->
+                        {{-- <!-- Switcher -->
                         <div class="demo-options">
                             <div class="demo-options-icon"><i class="ti ti-paint-bucket"></i></div>
                             <div class="demo-heading">Demo Settings</div>
-                    
+
                             <div class="demo-body">
                                 <div class="tabular">
                                     <div class="tabular-row">
@@ -190,9 +181,9 @@
                                     <li><span class="demo-light-blue"></span></li>
                                     <li><span class="demo-blue"></span></li>
                                     <li><span class="demo-indigo"></span></li>
-                                    <li><span class="demo-deep-purple"></span></li> 
-                                    <li><span class="demo-purple"></span></li> 
-                                    <li><span class="demo-pink"></span></li> 
+                                    <li><span class="demo-deep-purple"></span></li>
+                                    <li><span class="demo-purple"></span></li>
+                                    <li><span class="demo-pink"></span></li>
                                     <li><span class="demo-red"></span></li>
                                     <li><span class="demo-teal"></span></li>
                                     <li><span class="demo-green"></span></li>
@@ -200,19 +191,19 @@
                                     <li><span class="demo-lime"></span></li>
                                     <li><span class="demo-yellow"></span></li>
                                     <li><span class="demo-amber"></span></li>
-                                    <li><span class="demo-orange"></span></li>               
+                                    <li><span class="demo-orange"></span></li>
                                     <li><span class="demo-deep-orange"></span></li>
                                     <li><span class="demo-midnightblue"></span></li>
                                     <li><span class="demo-bluegray"></span></li>
                                     <li><span class="demo-bluegraylight"></span></li>
-                                    <li><span class="demo-black"></span></li> 
-                                    <li><span class="demo-gray"></span></li> 
-                                    <li><span class="demo-graylight"></span></li> 
+                                    <li><span class="demo-black"></span></li>
+                                    <li><span class="demo-gray"></span></li>
+                                    <li><span class="demo-graylight"></span></li>
                                     <li><span class="demo-default"></span></li>
                                     <li><span class="demo-brown"></span></li>
                                 </ul>
                             </div>
-                    
+
                             <div class="demo-body">
                                 <div class="option-title">Sidebar</div>
                                 <ul id="demo-sidebar-color" class="demo-color-list">
@@ -220,9 +211,9 @@
                                     <li><span class="demo-light-blue"></span></li>
                                     <li><span class="demo-blue"></span></li>
                                     <li><span class="demo-indigo"></span></li>
-                                    <li><span class="demo-deep-purple"></span></li> 
-                                    <li><span class="demo-purple"></span></li> 
-                                    <li><span class="demo-pink"></span></li> 
+                                    <li><span class="demo-deep-purple"></span></li>
+                                    <li><span class="demo-purple"></span></li>
+                                    <li><span class="demo-pink"></span></li>
                                     <li><span class="demo-red"></span></li>
                                     <li><span class="demo-teal"></span></li>
                                     <li><span class="demo-green"></span></li>
@@ -230,23 +221,23 @@
                                     <li><span class="demo-lime"></span></li>
                                     <li><span class="demo-yellow"></span></li>
                                     <li><span class="demo-amber"></span></li>
-                                    <li><span class="demo-orange"></span></li>               
+                                    <li><span class="demo-orange"></span></li>
                                     <li><span class="demo-deep-orange"></span></li>
                                     <li><span class="demo-midnightblue"></span></li>
                                     <li><span class="demo-bluegray"></span></li>
                                     <li><span class="demo-bluegraylight"></span></li>
-                                    <li><span class="demo-black"></span></li> 
-                                    <li><span class="demo-gray"></span></li> 
-                                    <li><span class="demo-graylight"></span></li> 
+                                    <li><span class="demo-black"></span></li>
+                                    <li><span class="demo-gray"></span></li>
+                                    <li><span class="demo-graylight"></span></li>
                                     <li><span class="demo-default"></span></li>
                                     <li><span class="demo-brown"></span></li>
                                 </ul>
                             </div>
-                    
-                    
-                    
+
+
+
                         </div>
-                        <!-- /Switcher -->
+                        <!-- /Switcher --> --}}
                     </div>
                 </div>
             </div>
