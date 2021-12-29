@@ -49,9 +49,9 @@
                         <div class="form-group mb-n">
                             <div class="col-xs-12">
                                 @if (Route::has('password.request'))
-                                    <a class="pull-left" href="{{ route('password.request') }}">
+                                    {{-- <a class="pull-left" href="{{ route('password.request') }}">
                                         Forgot Password
-                                    </a>
+                                    </a> --}}
                                 @endif
                                 <div class="checkbox-inline icheck pull-right p-n">
                                     <label for="">

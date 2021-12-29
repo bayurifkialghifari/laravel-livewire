@@ -63,6 +63,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group mb-md">
+                            <div class="col-xs-12">
+                                <div class="input-group">							
+                                    <span class="input-group-addon">
+                                        <i class="ti ti-key"></i>
+                                    </span>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Repeat Password" required>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group mb-n">
 							<div class="col-xs-12">
 								<div class="checkbox icheck">

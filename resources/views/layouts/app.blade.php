@@ -32,69 +32,224 @@
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/iCheck/icheck.min.js') }}"></script>     					
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/nanoScroller/js/jquery.nanoscroller.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/js/application.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('templates/assets/plugins/datatables/jquery.dataTables.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('templates/assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/demo/demo.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/demo/demo-switcher.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('templates/assets/plugins/datatables/jquery.dataTables.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('templates/assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.3/rails.min.js"></script> --}}
 </head>
-<body class="focused-form animated-content">
+<body class="animated-content">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+            <div class="logo-area">
+                <span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg">
+                    <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
+                        <span class="icon-bg">
+                            <i class="ti ti-menu"></i>
+                        </span>
+                    </a>
+                </span>
+                
+                <a class="navbar-brand" href="index.html">Avenxo</a>
+    
+            </div><!-- logo-area -->
+    
+            <ul class="nav navbar-nav toolbar pull-right">
+    
+                <li class="toolbar-icon-bg hidden-xs" id="trigger-fullscreen">
+                    <a href="#" class="toggle-fullscreen"><span class="icon-bg"><i class="ti ti-fullscreen"></i></span></i></a>
+                </li>
 
+                <li class="dropdown toolbar-icon-bg">
+                    <a href="#" class="dropdown-toggle username" data-toggle="dropdown">
+                        <img class="img-circle" src="http://placehold.it/300&text=Placeholder" alt="" />
+                    </a>
+                    <ul class="dropdown-menu userinfo arrow">
+                        <li><a href="#/"><i class="ti ti-user"></i><span>Profile</span><!-- <span class="badge badge-info pull-right">info</span> --></a></li>
+                        <li><a href="#/"><i class="ti ti-panel"></i><span>Account</span></a></li>
+                        <li><a href="#/"><i class="ti ti-settings"></i><span>Settings</span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#/"><i class="ti ti-stats-up"></i><span>Earnings</span></a></li>
+                        <li><a href="#/"><i class="ti ti-view-list-alt"></i><span>Statement</span></a></li>
+                        <li><a href="#/"><i class="ti ti-money"></i><span>Withdrawals</span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:void(0)" onclick="$('#form-logout').submit()"><i class="ti ti-shift-right"></i><span>Sign Out</span></a></li>
                     </ul>
+                </li>
+                <form action="{{ url('logout') }}" method="post" id="form-logout">
+                    @csrf
+                </form>
+            </ul>
+        </header>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+        <main class="">
+            <div id="wrapper">
+                <div id="layout-static">
+                    <div class="static-sidebar-wrapper sidebar-default">
+                        <div class="static-sidebar">
+                            <div class="sidebar">
+                                <div class="widget">
+                                    <div class="widget-body" style="padding-top: 50px">
+                                        <div class="userinfo">
+                                            <div class="avatar">
+                                                <img src="http://placehold.it/300&text=Placeholder" class="img-responsive img-circle"> 
+                                            </div>
+                                            <div class="info">
+                                                <span class="username">Jonathan Smith</span>
+                                                <span class="useremail">jon@avenxo.com</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </li>
-                        @endguest
-                    </ul>
+                                <div class="widget stay-on-collapse" id="widget-sidebar">
+                                    @include('layouts.navigation')
+                                </div>
+    
+                                {{-- <div class="widget" id="widget-progress">
+                                    <div class="widget-heading">
+                                        Progress
+                                    </div>
+                                    <div class="widget-body">
+    
+                                        <div class="mini-progressbar">
+                                            <div class="clearfix mb-sm">
+                                                <div class="pull-left">Bandwidth</div>
+                                                <div class="pull-right">50%</div>
+                                            </div>
+                                            
+                                            <div class="progress">    
+                                                <div class="progress-bar progress-bar-lime" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="mini-progressbar">
+                                            <div class="clearfix mb-sm">
+                                                <div class="pull-left">Storage</div>
+                                                <div class="pull-right">25%</div>
+                                            </div>
+                                            
+                                            <div class="progress">    
+                                                <div class="progress-bar progress-bar-info" style="width: 25%"></div>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="static-content-wrapper">
+                        <div class="static-content">
+                            <div class="page-content">
+                                <ol class="breadcrumb">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Advanced Tables</a></li>
+                                    <li class="active"><a href="tables-data.html">Data Tables</a></li>
+                                </ol>
+                                @if (session('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                                @yield('content')
+                            </div> <!-- #page-content -->
+                        </div>
+                        <footer role="contentinfo">
+                            <div class="clearfix">
+                                <ul class="list-unstyled list-inline pull-left">
+                                    <li><h6 style="margin: 0;">&copy; 2015 Avenxo</h6></li>
+                                </ul>
+                                <button class="pull-right btn btn-link btn-xs hidden-print" id="back-to-top"><i class="ti ti-arrow-up"></i></button>
+                            </div>
+                        </footer>
+                        <!-- Switcher -->
+                        <div class="demo-options">
+                            <div class="demo-options-icon"><i class="ti ti-paint-bucket"></i></div>
+                            <div class="demo-heading">Demo Settings</div>
+                    
+                            <div class="demo-body">
+                                <div class="tabular">
+                                    <div class="tabular-row">
+                                        <div class="tabular-cell">Fixed Header</div>
+                                        <div class="tabular-cell demo-switches"><input class="bootstrap-switch" type="checkbox" checked data-size="mini" data-on-color="success" data-off-color="default" name="demo-fixedheader" data-on-text="&nbsp;" data-off-text="&nbsp;"></div>
+                                    </div>
+                                    <div class="tabular-row">
+                                        <div class="tabular-cell">Boxed Layout</div>
+                                        <div class="tabular-cell demo-switches"><input class="bootstrap-switch" type="checkbox" data-size="mini" data-on-color="success" data-off-color="default" name="demo-boxedlayout" data-on-text="&nbsp;" data-off-text="&nbsp;"></div>
+                                    </div>
+                                    <div class="tabular-row">
+                                        <div class="tabular-cell">Collapse Leftbar</div>
+                                        <div class="tabular-cell demo-switches"><input class="bootstrap-switch" type="checkbox" data-size="mini" data-on-color="success" data-off-color="default" name="demo-collapseleftbar" data-on-text="&nbsp;" data-off-text="&nbsp;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="demo-body">
+                                <div class="option-title">Topnav</div>
+                                <ul id="demo-header-color" class="demo-color-list">
+                                    <li><span class="demo-cyan"></span></li>
+                                    <li><span class="demo-light-blue"></span></li>
+                                    <li><span class="demo-blue"></span></li>
+                                    <li><span class="demo-indigo"></span></li>
+                                    <li><span class="demo-deep-purple"></span></li> 
+                                    <li><span class="demo-purple"></span></li> 
+                                    <li><span class="demo-pink"></span></li> 
+                                    <li><span class="demo-red"></span></li>
+                                    <li><span class="demo-teal"></span></li>
+                                    <li><span class="demo-green"></span></li>
+                                    <li><span class="demo-light-green"></span></li>
+                                    <li><span class="demo-lime"></span></li>
+                                    <li><span class="demo-yellow"></span></li>
+                                    <li><span class="demo-amber"></span></li>
+                                    <li><span class="demo-orange"></span></li>               
+                                    <li><span class="demo-deep-orange"></span></li>
+                                    <li><span class="demo-midnightblue"></span></li>
+                                    <li><span class="demo-bluegray"></span></li>
+                                    <li><span class="demo-bluegraylight"></span></li>
+                                    <li><span class="demo-black"></span></li> 
+                                    <li><span class="demo-gray"></span></li> 
+                                    <li><span class="demo-graylight"></span></li> 
+                                    <li><span class="demo-default"></span></li>
+                                    <li><span class="demo-brown"></span></li>
+                                </ul>
+                            </div>
+                    
+                            <div class="demo-body">
+                                <div class="option-title">Sidebar</div>
+                                <ul id="demo-sidebar-color" class="demo-color-list">
+                                    <li><span class="demo-cyan"></span></li>
+                                    <li><span class="demo-light-blue"></span></li>
+                                    <li><span class="demo-blue"></span></li>
+                                    <li><span class="demo-indigo"></span></li>
+                                    <li><span class="demo-deep-purple"></span></li> 
+                                    <li><span class="demo-purple"></span></li> 
+                                    <li><span class="demo-pink"></span></li> 
+                                    <li><span class="demo-red"></span></li>
+                                    <li><span class="demo-teal"></span></li>
+                                    <li><span class="demo-green"></span></li>
+                                    <li><span class="demo-light-green"></span></li>
+                                    <li><span class="demo-lime"></span></li>
+                                    <li><span class="demo-yellow"></span></li>
+                                    <li><span class="demo-amber"></span></li>
+                                    <li><span class="demo-orange"></span></li>               
+                                    <li><span class="demo-deep-orange"></span></li>
+                                    <li><span class="demo-midnightblue"></span></li>
+                                    <li><span class="demo-bluegray"></span></li>
+                                    <li><span class="demo-bluegraylight"></span></li>
+                                    <li><span class="demo-black"></span></li> 
+                                    <li><span class="demo-gray"></span></li> 
+                                    <li><span class="demo-graylight"></span></li> 
+                                    <li><span class="demo-default"></span></li>
+                                    <li><span class="demo-brown"></span></li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                        </div>
+                        <!-- /Switcher -->
+                    </div>
                 </div>
             </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
         </main>
     </div>
 </body>
