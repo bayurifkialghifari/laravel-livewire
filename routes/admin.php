@@ -17,6 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('setting')->group(function () {
-    Route::get('menu', 'Setting\MenuController@index');
-});
+Route::get('/setting/menu', 'Admin\Setting\Menu');

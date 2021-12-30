@@ -8,8 +8,9 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Home', route('home'));
 });
 
-// Home > Blog
-Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
-    $trail->parent('home');
-    $trail->push('Blog', route('home'));
+// Setting Menu
+Breadcrumbs::for('setting-menu', function (BreadcrumbTrail $trail) {
+    $trail->push('Dashboard', url('/admin'));
+    $trail->push('Setting');
+    $trail->push('Menu');
 });

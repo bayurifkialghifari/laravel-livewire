@@ -27,6 +27,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string|null
      */
     protected $namespace = 'App\\Http\\Controllers';
+    protected $livewire = 'App\\Http\\Livewire';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -49,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::prefix('admin')
                 ->middleware(['web', 'role:admin'])
-                ->namespace($this->namespace . '\\Admin')
+                ->namespace($this->livewire)
                 ->group(base_path('routes/admin.php'));
         });
     }

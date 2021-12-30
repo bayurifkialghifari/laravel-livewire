@@ -37,8 +37,10 @@
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/datatables/jquery.dataTables.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.3/rails.min.js"></script> --}}
+    @livewireStyles
+    @livewireScripts
 </head>
-<body class="animated-content">
+<body class="">
     <div id="app">
         <header id="topnav" class="navbar navbar-fixed-top navbar-bluegray" role="banner">
 
@@ -96,8 +98,8 @@
                                                 <img src="http://placehold.it/300&text=Placeholder" class="img-responsive img-circle">
                                             </div>
                                             <div class="info">
-                                                <span class="username">Jonathan Smith</span>
-                                                <span class="useremail">jon@avenxo.com</span>
+                                                <span class="username">{{ auth()->user()->name }}</span>
+                                                <span class="useremail">{{ auth()->user()->email }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -141,8 +143,9 @@
                     <div class="static-content-wrapper" style="padding-top: 70px">
                         <div class="static-content">
                             <div class="page-content">
-                                {{ Breadcrumbs::render(isset($view) ? $view : 'blog') }}
+                                {{ Breadcrumbs::render(isset($view) ? $view : 'home') }}
                                 @yield('content')
+                                {{ $slot ?? '' }}
                             </div> <!-- #page-content -->
                         </div>
                         <footer role="contentinfo">
