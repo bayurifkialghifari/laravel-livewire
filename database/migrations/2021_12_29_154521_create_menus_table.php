@@ -19,6 +19,7 @@ class CreateMenusTable extends Migration
             $table->string('icon');
             $table->string('url');
             $table->integer('parent_id')->default(0);
+            $table->integer('index')->default(1);
             $table->timestamps();
         });
     }

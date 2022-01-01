@@ -18,7 +18,7 @@ class Menu extends Component
         $search = '',
         $paginate = 10,
         $statusUpdate = false,
-        $ids, $parent, $title, $icon, $url;
+        $ids, $parent, $title, $icon, $url, $index;
 
     public function render()
     {
@@ -49,6 +49,7 @@ class Menu extends Component
         $this->parent = $exe->parent_id;
         $this->title = $exe->title;
         $this->icon = $exe->icon;
+        $this->index = $exe->index;
         $this->url = $exe->url;
         $this->changeStatusUpdate(true);
     }
@@ -61,6 +62,7 @@ class Menu extends Component
                 'parent_id' => $this->parent,
                 'title' => $this->title,
                 'icon' => $this->icon,
+                'index' => $this->index,
                 'url' => $this->url,
             ]);
         } else {
@@ -69,6 +71,7 @@ class Menu extends Component
                 'parent_id' => $this->parent,
                 'title' => $this->title,
                 'icon' => $this->icon,
+                'index' => $this->index,
                 'url' => $this->url,
             ]);
         }
@@ -102,6 +105,7 @@ class Menu extends Component
         $this->parent = null;
         $this->title = null;
         $this->icon = null;
+        $this->index = null;
         $this->url = null;
     }
 }

@@ -109,7 +109,6 @@
                         <div class="static-content">
                             <div class="page-content">
                                 {{ Breadcrumbs::render(isset($view) ? $view : 'home') }}
-                                @yield('content')
                                 {{ $slot ?? '' }}
                             </div> <!-- #page-content -->
                         </div>
