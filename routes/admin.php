@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @Author: Bayu Rifki Alghifari
+ * @Date:   2021-12-29 21:37:13
+ * @Last Modified by:   Bayu Rifki Alghifari
+ * @Last Modified time: 2022-02-09 17:21:35
+ */
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +26,4 @@ Route::get('/', function () {
 });
 
 Route::get('/setting/menu', 'Admin\Setting\Menu');
+Route::get('/setting/role', 'Admin\Setting\Role');

@@ -108,7 +108,10 @@
                     <div class="static-content-wrapper" style="padding-top: 70px">
                         <div class="static-content">
                             <div class="page-content">
-                                {{ Breadcrumbs::render(isset($view) ? $view : 'home') }}
+                                @php
+                                    $breadcrumb = request()->path();
+                                @endphp
+                                {{ Breadcrumbs::render($breadcrumb) }}
                                 {{ $slot ?? '' }}
                             </div> <!-- #page-content -->
                         </div>

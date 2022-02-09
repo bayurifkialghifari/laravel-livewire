@@ -2,9 +2,9 @@
 
 /**
  * @Author: Bayu Rifki Alghifari
- * @Date:   2021-12-29 22:30:36
+ * @Date:   2022-02-09 17:21:32
  * @Last Modified by:   Bayu Rifki Alghifari
- * @Last Modified time: 2022-02-09 16:17:57
+ * @Last Modified time: 2022-02-09 17:39:10
  */
 
 
@@ -13,31 +13,28 @@ namespace App\Http\Livewire\Admin\Setting;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Database\Eloquent\Builder;
-use App\Models\Menu as Menus;
+use App\Models\Role as Roles;
 
-class Menu extends Component
+class Role extends Component
 {
     use WithPagination;
 
     protected $queryString = ['paginate'];
     protected $listeners = ['destroy' => 'destroy'];
-    private $searchable = ['title', 'icon', 'url'];
-    public $header = 'Menu',
+    private $searchable = ['name', 'guard_name'];
+    public $header = 'Role',
         $search = '',
         $paginate = 10,
         $statusUpdate = false,
-        $ids, $parent, $title, $icon, $url, $index;
+        $ids, $name, $guard_name;
 
     public function render()
     {
-        $data = Menus::latest()->paginate($this->paginate);
-        $parents = Menus::where('parent_id', '=', 0)->get();
+        $data = Roles::latest()->paginate($this->paginate);
 
         // Search
         if ($this->search !== null) {
-            $data = Menus::latest()->whereHas('parent', function (Builder $query) {
-                $query->where('title', 'like', "%{$this->search}%");
-            });
+            $data = Roles::latest();
 
             foreach ($this->searchable as $field) {
                 $data = $data->orWhere($field, 'like', "%{$this->search}%");
@@ -46,19 +43,16 @@ class Menu extends Component
             $data = $data->paginate($this->paginate);
         }
 
-        return view('livewire.admin.setting.menu', compact('data', 'parents'));
+        return view('livewire.admin.setting.role', compact('data'));
     }
 
     public function getDetail($id)
     {
-        $exe = Menus::find($id);
+        $exe = Roles::find($id);
 
         $this->ids = $exe->id;
-        $this->parent = $exe->parent_id;
-        $this->title = $exe->title;
-        $this->icon = $exe->icon;
-        $this->index = $exe->index;
-        $this->url = $exe->url;
+        $this->name = $exe->name;
+        $this->guard_name = $exe->guard_name;
         $this->changeStatusUpdate(true);
     }
 
@@ -66,21 +60,15 @@ class Menu extends Component
     {
         if ($this->statusUpdate) {
             // Update
-            $exe = Menus::find($this->ids)->update([
-                'parent_id' => $this->parent,
-                'title' => $this->title,
-                'icon' => $this->icon,
-                'index' => $this->index,
-                'url' => $this->url,
+            $exe = Roles::find($this->ids)->update([
+                'name' => $this->name,
+                'guard_name' => $this->guard_name,
             ]);
         } else {
             // Create
-            $exe = Menus::create([
-                'parent_id' => $this->parent,
-                'title' => $this->title,
-                'icon' => $this->icon,
-                'index' => $this->index,
-                'url' => $this->url,
+            $exe = Roles::create([
+                'name' => $this->name,
+                'guard_name' => $this->guard_name,
             ]);
         }
 
@@ -91,7 +79,7 @@ class Menu extends Component
 
     public function destroy($id)
     {
-        $exe = Menus::find($id)->delete();
+        $exe = Roles::find($id)->delete();
 
         $this->emit('alert', 'Delete data success');
     }
@@ -110,10 +98,7 @@ class Menu extends Component
     {
         $this->statusUpdate = false;
         $this->ids = null;
-        $this->parent = null;
-        $this->title = null;
-        $this->icon = null;
-        $this->index = null;
-        $this->url = null;
+        $this->name = null;
+        $this->guard_name = null;
     }
 }

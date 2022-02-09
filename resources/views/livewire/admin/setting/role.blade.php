@@ -34,22 +34,16 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Parent</th>
-                                    <th>Title</th>
-                                    <th>Icon</th>
-                                    <th>Index</th>
-                                    <th>Url</th>
+                                    <th>Name</th>
+                                    <th>Guard Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($data as $r)
                                     <tr>
-                                        <td>{{ $r->parent->title ?? '-' }}</td>
-                                        <td>{{ $r->title }}</td>
-                                        <td><i class="{{ $r->icon }}"></i></td>
-                                        <td>{{ $r->index }}</td>
-                                        <td>{{ $r->url }}</td>
+                                        <td>{{ $r->name }}</td>
+                                        <td>{{ $r->guard_name }}</td>
                                         <td>
                                             <a data-toggle="modal" href="#myModal" wire:click="getDetail({{$r->id}})" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-pencil"></i> Update
@@ -83,58 +77,24 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <label>Parent</label>
+                            <div class="col-md-12">
+                                <label>Name</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="ti ti-bookmark"></i>
                                     </span>
-                                    <select wire:model="parent" class="form-control sm">
-                                        <option value="">--Select Parent--</option>
-                                        @foreach ($parents as $pr)
-                                            <option value="{{ $pr->id }}">{{ $pr->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Title</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="ti ti-bookmark"></i>
-                                    </span>
-                                    <input wire:model="title" type="text" class="form-control sm">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Icon</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="ti ti-bookmark"></i>
-                                    </span>
-                                    <input wire:model="icon" type="text" class="form-control sm">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Index</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="ti ti-bookmark"></i>
-                                    </span>
-                                    <input wire:model="index" type="text" class="form-control sm">
+                                    <input wire:model="name" type="text" class="form-control sm">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label>URL</label>
+                                <label>Guard Name</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="ti ti-bookmark"></i>
                                     </span>
-                                    <input wire:model="url" type="text" class="form-control sm">
+                                    <input wire:model="guard_name" type="text" class="form-control sm">
                                 </div>
                             </div>
                         </div>
