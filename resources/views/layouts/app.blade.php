@@ -29,11 +29,12 @@
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/iCheck/icheck.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('templates/assets/plugins/nanoScroller/js/jquery.nanoscroller.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('templates/assets/js/application.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>.modal-backdrop { opacity: 0 !important; }</style>
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     @livewireStyles
     @livewireScripts
+    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script>
 </head>
 <body class="">
     <div id="app">
@@ -128,37 +129,43 @@
             </div>
         </main>
     </div>
+    <div id="javascriptload"></div>
     <script>
-        window.livewire.on('closeModal', modal => {
-            $(`#${modal}`).modal('hide')
-        })
+        $( document ).on('turbolinks:load', function()
+        {
+            $('#javascriptload').html(`<script type="text/javascript" src="{{ asset('templates/assets/js/application.js') }}"><\/script>`)
 
-        window.livewire.on('alert', (content, status = 'success', position = 'center') => {
-            Swal.fire({
-                position: position,
-                icon: status,
-                title: content,
-                showConfirmButton: false,
-                timer: 1000,
+            window.livewire.on('closeModal', modal => {
+                $(`#${modal}`).modal('hide')
             })
-        })
 
-        window.livewire.on('confirm', (id, type = 'delete', title = 'Are you sure?', content = '', icon = 'warning') => {
-            Swal.fire({
-                title: title,
-                text: content,
-                icon: icon,
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    if(type == 'delete')
-                    {
-                        Livewire.emit('destroy', id)
+            window.livewire.on('alert', (content, status = 'success', position = 'center') => {
+                Swal.fire({
+                    position: position,
+                    icon: status,
+                    title: content,
+                    showConfirmButton: false,
+                    timer: 1000,
+                })
+            })
+
+            window.livewire.on('confirm', (id, type = 'delete', title = 'Are you sure?', content = '', icon = 'warning') => {
+                Swal.fire({
+                    title: title,
+                    text: content,
+                    icon: icon,
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        if(type == 'delete')
+                        {
+                            Livewire.emit('destroy', id)
+                        }
                     }
-                }
+                })
             })
         })
     </script>

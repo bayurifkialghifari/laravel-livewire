@@ -5,7 +5,7 @@
     <ul class="acc-menu">
         <li class="nav-separator"><span>Explore</span></li>
         @foreach($menu as $menu)
-            <li><a href="{{ $menu->url == '' || $menu->url == '#' ? '#' : url('/'.$menu->url) }}"><i class="{{ $menu->icon }}"></i><span>{{ $menu->title }}</span></a>
+            <li><a ><i class="{{ $menu->icon }}"></i><span>{{ $menu->title }}</span></a>
                 @if(count($menu->childs))
                     <ul class="acc-menu">
                         @foreach($menu->childs as $child)
